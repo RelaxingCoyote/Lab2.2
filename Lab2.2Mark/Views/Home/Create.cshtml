@@ -1,0 +1,23 @@
+﻿@model Lab2._2Mark.Models.Image
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Новая книга</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name, "Название картинки")
+    <br />
+    @Html.EditorFor(model => model.Name)
+    <br />
+    <br />
+    @Html.LabelFor(model => model.Path, "Путь")
+    <br />
+    @Html.EditorFor(model => model.Path)
+    <br />
+    <br />
+    <input type="submit" value="Добавить" />
+}
+

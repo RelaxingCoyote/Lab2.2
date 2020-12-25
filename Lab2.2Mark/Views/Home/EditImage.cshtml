@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Редактировать картинку";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Lab2._2Mark.Models.Image
+<h2>Книга № @Model.Id</h2>
+@using (Html.BeginForm("EditImage", "Home", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(m => m.Id)
+        <p>
+            @Html.LabelFor(m => m.Name, "Название картинки")
+            <br />
+            @Html.EditorFor(m => m.Name)
+        </p>
+        <p>
+            @Html.LabelFor(m => m.Path, "Расположение картинки")
+            <br />
+            @Html.EditorFor(m => m.Path)
+
+        </p>
+        <p><input type="submit" value="Отправить" /></p>
+    </fieldset>
+}
+

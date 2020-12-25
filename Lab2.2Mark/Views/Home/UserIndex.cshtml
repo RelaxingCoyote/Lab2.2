@@ -1,0 +1,41 @@
+﻿@model Lab2._2Mark.Models.IndexViewModel
+@using Lab2._2Mark.Helpers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<table class="table">
+    @foreach (var item in Model.Images)
+    {// Здесь выводим переданные в модель картинки
+        using (Html.BeginForm("UserIndex", "Home", FormMethod.Post))
+        {
+
+        <tr>
+
+            <td>
+                <p><img style='max-width:600px;' src="@item.Path" /></p>
+                <p>@item.Name</p>
+                <p>Рейтинг: @item.Rating</p>
+                <p>
+                    @Html.Hidden("id", item.Id)
+                    <input type="submit" name="buttonValue" value="Нравится" />
+                    <input type="submit" name="buttonValue" value="Ненравится" />
+                </p>
+            </td>
+
+        </tr>
+        }
+    }
+</table>
+
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("UserIndex", new { page = x }))
+</div>
+

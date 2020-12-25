@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Смешные картинки</title>
+</head>
+<body>
+    <div>
+        <h3>Очень смешные картинки</h3>
+        <table>
+            @foreach (var b in ViewBag.Images)
+            {
+                <tr>
+
+                    <td>
+                        <p><img style='max-width:600px;' src="@b.Path" /></p>
+                        <p>@b.Name</p>
+                        <p>@b.Rating</p>
+                        <p>
+                            <a href="/Home/EditImage/@b.Id">Редактировать</a> |
+                            <a href="/Home/Delete/@b.Id">Удалить</a>
+                        </p>
+                    </td>
+
+                </tr>
+            }
+        </table>
+        <p><a href="/Home/Create"><button>Добавить картинку</button></a></p>
+    </div>
+    <p></p>
+</body>
+</html>
